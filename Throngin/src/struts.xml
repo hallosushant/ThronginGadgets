@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="global" extends="struts-default">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+	
+		<interceptors>
+			<interceptor name="ZInterceptor" class="com.sushant.verma.common.interceptor.ZInterceptor"/>
+	 		<interceptor-stack name="ZDefaultStack">
+	 			 <interceptor-ref name="ZInterceptor"/>
+	        	 <interceptor-ref name="defaultStack">
+	      			<param name="exception.logEnabled">true</param>
+	      			<param name="exception.logLevel">ERROR</param>
+	   			</interceptor-ref>
+	 	    </interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="ZDefaultStack" />
+	
+        <global-results>
+            <result type="tiles">tiles.baseLayoutNOSideBar.body.welcomePage.jsp</result>
+		    <result name="Exception">/WEB-INF/view/common/exception/globalException.jsp</result>
+		    <result name="catchedException" type="tiles">tiles.baseLayoutNOSideBar.body.catchedException.jsp</result>
+		    <result name="signIn" type="tiles">tiles.baseLayoutNOSideBar.body.signIn.jsp</result>
+		    <result name="userInactive">/WEB-INF/view/common/UserInactive.jsp</result>
+		    <result name="home" type="redirectAction"><param name="actionName">home</param><param name="namespace">/</param></result>
+		</global-results>
+        <global-exception-mappings>
+        	 <exception-mapping exception="java.lang.Exception" result="Exception"/>
+        </global-exception-mappings>
+		
+		<action name="*">
+            <result type="redirectAction">
+            	<param name="actionName">home</param>
+            	<param name="namespace">/</param>
+            </result>
+        </action>
+		
+		<action name="home" class="com.sushant.verma.common.action.WelcomePageAction">
+			<result type="tiles">tiles.baseLayoutNOSideBar.body.welcomePage.jsp</result>
+			<result name="success" type="tiles">tiles.baseLayoutNOSideBar.body.welcomePage.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayoutNOSideBar.body.welcomePage.jsp</result>
+		</action>
+		<action name="urlRewriter" class="com.sushant.verma.common.action.UrlRewriterAction"></action>
+	</package>
+	<include file="com/sushant/verma/login/Struts-login.xml"></include>
+	<include file="com/sushant/verma/admin/Struts-admin.xml"></include>
+	<include file="com/sushant/verma/device/Struts-device.xml"></include>
+</struts>
+
+

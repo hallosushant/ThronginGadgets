@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+
+	<bean id="login_LoginAction" class="com.sushant.verma.login.action.LoginAction">
+		<property name="loginBllInterface" ref="login_LoginBllImpl" />
+	</bean>
+	<bean id="login_SignUpAction" class="com.sushant.verma.login.action.SignUpAction">
+		<property name="imageCaptchaService" ref="common_imageCaptchaService" />
+	</bean>
+	
+	<bean id="login_LoginBllImpl" class="com.sushant.verma.login.bll.LoginBllImpl">
+		<property name="loginDao" ref="login_LoginDao" />
+		<property name="loginSPDao" ref="login_LoginSPDao"/>
+		<property name="emailService" ref="email_emailService"></property>
+	</bean>
+
+	<bean id="login_LoginDao" class="com.sushant.verma.login.dao.LoginDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+<!-- 	
+	<bean id="login_SpLoginDao" class="com.sushant.verma.login.dao.SpLoginDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ -->
+	<bean id="login_LoginSPDao" class="com.sushant.verma.login.dao.LoginSPDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

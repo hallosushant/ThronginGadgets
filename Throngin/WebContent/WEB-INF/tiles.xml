@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/WEB-INF/view/tiles/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="navbar" value="/WEB-INF/view/tiles/navbar.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/view/tiles/header.jsp"/>
+      <put-attribute name="breadcrumb" value="/WEB-INF/view/tiles/breadcrumbs.jsp"/>
+      <put-attribute name="leftSidebar"   value="/WEB-INF/view/tiles/leftSidebar.jsp"/>
+      <put-attribute name="body"   value="/WEB-INF/view/tiles/body.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/view/tiles/footer.jsp"/>
+  </definition>
+  
+  <definition name="signIn.tiles.body" extends="baseLayout">
+      <put-attribute name="title"  value="SignIn : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/signIn.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.assignUserRole.jsp" extends="baseLayout">
+      <put-attribute name="title"  value="Assign User Role : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/admin/assignUserRole.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.createCategory.jsp" extends="baseLayout">
+      <put-attribute name="title"  value="Create Category : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/admin/createCategory.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.admin.assignModelDetail.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="Assign Model Detail : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/admin/assignModelDetail.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.admin.addNewModel.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="Add New Model : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/admin/addNewModel.jsp"/>      
+  </definition>
+    <definition name="tiles.baseLayout.body.admin.editModelBasicDetail.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="Add New Model : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/admin/editModelBasicDetail.jsp"/>      
+  </definition>
+  
+  <definition name="tiles.baseLayout.body.admin.approveReview.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="Approve Review : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/admin/approveReview.jsp"/>      
+  </definition>
+  
+  <!-- Device Package Starts -->
+  
+  <!-- Default Model Gallery used for INPUT return type-->
+  <definition name="tiles.baseLayout.body.device.modelGallery.jsp" extends="baseLayout">
+      <put-attribute name="title"  value="Model Gallery : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/modelGallery.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.device.modelGallery.jsp.*" extends="baseLayout">
+      <put-attribute name="title"  value="{1} : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/modelGallery.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.device.moreModelGallery.jsp.*" extends="baseLayout">
+      <put-attribute name="title"  value="{1} : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/moreModelGallery.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayout.body.device.advancedSearch" extends="baseLayout">
+      <put-attribute name="title"  value="Advanced Search : Throngin Gadgets"/>
+      <put-attribute name="leftSidebar"   value="/WEB-INF/view/tiles/advancedSearch.jsp"/>  
+      <put-attribute name="body"   value="/WEB-INF/view/device/searchResult.jsp"/>    
+  </definition>
+  <definition name="tiles.baseLayout.body.device.quickSearch" extends="baseLayout">
+      <put-attribute name="title"  value="Quick Search : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/searchResult.jsp"/>    
+  </definition>
+
+  <!-- Device Package Ends -->
+
+
+
+
+
+
+
+
+  <definition name="baseLayoutRightSidebar" template="/WEB-INF/view/tiles/baseLayoutRightSidebar.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="navbar" value="/WEB-INF/view/tiles/navbar.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/view/tiles/header.jsp"/>
+      <put-attribute name="breadcrumb" value="/WEB-INF/view/tiles/breadcrumbs.jsp"/>
+      <put-attribute name="rightSidebar"   value="/WEB-INF/view/tiles/rightSidebar.jsp"/>
+      <put-attribute name="body"   value="/WEB-INF/view/tiles/body.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/view/tiles/footer.jsp"/>
+  </definition>
+  <definition name="tiles.baseLayoutRightSidebar.body.device.modelDetail.jsp.*" extends="baseLayoutRightSidebar">
+      <put-attribute name="title"  value="{1} : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/modelDetail.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutRightSidebar.body.device.modelDetail.jsp" extends="baseLayoutRightSidebar">
+      <put-attribute name="title"  value="Model Details : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/modelDetail.jsp"/>      
+  </definition> 
+   
+  <definition name="tiles.baseLayoutRightSidebar.body.device.writeReview.jsp.*" extends="baseLayoutRightSidebar">
+      <put-attribute name="title"  value="{1} : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/writeReview.jsp"/>      
+  </definition> 
+  <definition name="tiles.baseLayoutRightSidebar.body.device.writeReview.jsp" extends="baseLayoutRightSidebar">
+      <put-attribute name="title"  value="Write Review : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/writeReview.jsp"/>      
+  </definition> 
+
+
+
+
+
+  <definition name="baseLayoutNOSideBar" template="/WEB-INF/view/tiles/baseLayoutNoSideBar.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="navbar" value="/WEB-INF/view/tiles/navbar.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/view/tiles/header.jsp"/>
+      <put-attribute name="breadcrumb" value="/WEB-INF/view/tiles/breadcrumbs.jsp"/>
+      <put-attribute name="body"   value="/WEB-INF/view/tiles/body.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/view/tiles/footer.jsp"/>
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.welcomePage.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="Home : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/welcomePage.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.signIn.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="SignIn : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/signIn.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.signUp.jsp" extends="baseLayoutNOSideBar" >
+      <put-attribute name="title"  value="SignUp : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/signUp.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.catchedException.jsp" extends="baseLayoutNOSideBar" >
+      <put-attribute name="title"  value="Error : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/common/exception/catchedException.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.success.registrationMsg.jsp" extends="baseLayoutNOSideBar" >
+      <put-attribute name="title"  value="Registration Successful : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/registrationMsg.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.error.registrationMsg.jsp" extends="baseLayoutNOSideBar" >
+      <put-attribute name="title"  value="Registration Error : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/registrationMsg.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutNOSideBar.body.loginSuccess.jsp" extends="baseLayoutNOSideBar">
+      <put-attribute name="title"  value="Login Success : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/loginSuccess.jsp"/>      
+  </definition>
+
+
+
+
+
+
+
+  <definition name="baseLayoutTwoSideBar" template="/WEB-INF/view/tiles/baseLayoutTwoSideBar.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="navbar" value="/WEB-INF/view/tiles/navbar.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/view/tiles/header.jsp"/>
+      <put-attribute name="breadcrumb" value="/WEB-INF/view/tiles/breadcrumbs.jsp"/>
+      <put-attribute name="leftSidebar"   value="/WEB-INF/view/tiles/leftSidebar.jsp"/>
+      <put-attribute name="rightSidebar"   value="/WEB-INF/view/tiles/rightSidebar.jsp"/>
+      <put-attribute name="body"   value="/WEB-INF/view/tiles/body.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/view/tiles/footer.jsp"/>
+  </definition>
+  
+  <definition name="tiles.baseLayoutTwoSideBar.body.loginSuccess.jsp" extends="baseLayoutTwoSideBar">
+      <put-attribute name="title"  value="Login Success : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/login/loginSuccess.jsp"/>      
+  </definition>
+  <definition name="tiles.baseLayoutTwoSideBar.body.deviceHome.jsp" extends="baseLayoutTwoSideBar">
+      <put-attribute name="title"  value="Devices Home : Throngin Gadgets"/>
+      <put-attribute name="body"   value="/WEB-INF/view/device/deviceHome.jsp"/>      
+  </definition>
+   
+  
+</tiles-definitions>

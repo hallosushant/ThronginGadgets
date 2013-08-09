@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="admin" extends="global">
+		<interceptors>
+	        <interceptor name="sessionValidationInterceptor" class="com.sushant.verma.common.interceptor.SessionValidationInterceptor"></interceptor>
+		    <interceptor-stack name="sessionValidationInterceptorStack">
+			    <interceptor-ref name="ZDefaultStack"/>
+				<interceptor-ref name="sessionValidationInterceptor" />
+			</interceptor-stack>
+	    </interceptors>
+	    <default-interceptor-ref name="sessionValidationInterceptorStack"/>
+		
+		<action name="assignUserRolePage" >
+			<result type="tiles">tiles.baseLayout.body.assignUserRole.jsp</result>
+		</action>
+		<action name="assignUserRoleAction" class="com.sushant.verma.admin.action.AssignUserRoleAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.assignUserRole.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.assignUserRole.jsp</result>
+		</action>
+		
+		<action name="createCategoryAction" class="com.sushant.verma.admin.action.CreateCategoryAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.createCategory.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.createCategory.jsp</result>
+		</action>
+		<action name="assignModelDetail"
+			class="com.sushant.verma.admin.action.AssignModelDetailAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.admin.assignModelDetail.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.admin.assignModelDetail.jsp</result>
+		</action>
+		<action name="editModelDetail"
+			class="com.sushant.verma.admin.action.AssignModelDetailAction" method="editModelDetail">
+			<result name="success" type="tiles">tiles.baseLayout.body.admin.assignModelDetail.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.admin.assignModelDetail.jsp</result>
+		</action>
+		<action name="addNewModelAction"
+			class="com.sushant.verma.admin.action.AddNewModelAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.admin.addNewModel.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.admin.addNewModel.jsp</result>
+		</action>
+		<action name="openModelBasicDetailsAction"
+			class="com.sushant.verma.admin.action.AddNewModelAction" >
+			<result name="success" type="tiles">tiles.baseLayout.body.admin.editModelBasicDetail.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.admin.editModelBasicDetail.jsp</result>
+		</action>
+		<action name="editModelBasicDetailsAction"
+			class="com.sushant.verma.admin.action.AddNewModelAction" method="editBasicDetails">
+			<result name="success" type="tiles">tiles.baseLayout.body.admin.editModelBasicDetail.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.admin.editModelBasicDetail.jsp</result>
+		</action>
+		<action name="approveReview"
+			class="com.sushant.verma.admin.action.ApproveReviewAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.admin.approveReview.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.admin.approveReview.jsp</result>
+			<result name="approved" type="redirectAction">
+				<param name="actionName">approveReview</param>
+				<param name="dId">${dId}</param>
+				<param name="msg">${msg}</param>
+				<param name="msgType">${msgType}</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="adminAjaxPackage" extends="struts-default,json-default">
+		<action name="*_AdminAjaxAction" class="com.sushant.verma.admin.action.AdminAjaxAction" method="{1}">
+			<result name="success" type="json">
+				<param name="excludeProperties">adminBllInterface</param>
+			</result>		
+		</action>
+	</package>
+</struts>
+
+

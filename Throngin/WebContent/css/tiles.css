@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+#tilesWrap{border:0 solid #FBFBFB;background-color:transparent;margin-bottom:0;margin-left:auto;margin-right:auto;margin-top:auto;padding-left:5px;padding-right:5px;padding-bottom:0;position:relative;width:1020px}
+#tilesNavbar{margin-bottom:5px;height:30px;width:100%;background-color:#059;display:block;overflow:visible;box-shadow:-5px 5px 10px #888;-moz-box-shadow:-5px 5px 10px #888;-webkit-box-shadow:-5px 5px 10px #888}
+#tilesHeader{border:0px solid #aef;background-position:10% 0;background-color:transparent;margin:5px 0;min-height:40px;padding:5px;display:block}
+#tilesBreadcrumb{border:0 solid #FBFBFB;background-color:transparent;clear:both;padding:0 5px;display:block}
+#tilesMiddleWrap{border-top:1px solid #FBFBFB;background-color:transparent;margin-bottom:5px;margin-left:auto;margin-right:auto;margin-top:5px;padding-left:0;padding-right:0;padding-bottom:5px;padding-top:5px;position:relative;width:auto;height:auto;overflow:visible}
+#tilesContent{border-left:1px solid #FBFBFB;background-color:white;display:inline;float:right;font-size:100%;line-height:1.6em;padding:0 5px 5px;margin-top:5px;margin-bottom:5px;text-align:left;width:77.5%;min-height:500px;height:auto;overflow:inherit}
+#tilesLeftSidebar{border:0 solid #FBFBFB;background-color:white;display:inline;float:left;line-height:1.0em;margin-top:5px;margin-bottom:5px;margin-right:5px;padding:1px;width:20%;min-height:500px;overflow:visible}
+#tilesRightSidebar{border-left:1px solid #FBFBFB;background-color:white;display:inline;float:right;line-height:1.5em;margin-top:5px;margin-bottom:5px;margin-left:0;padding:1px;width:200px;min-height:500px;overflow:auto}
+#tilesFooter{border-top:1px solid #FBFBFB;background-color:white;background-position:50% 100%;clear:both;height:auto;margin-bottom:0;margin-top:25px;padding:5px 5px 0;overflow:auto;background-image: url(../images/footerBg.png);background-repeat: repeat-x;background-size: contain;color:white;}
+#tilesFooter a{color: white;}
+#tilesContentFull{border:0px solid #FBFBFB;background-color:white;font-size:100%;line-height:1.6em;padding:5px;margin-top:5px;margin-bottom:5px;text-align:left;width:1008px;display:block;min-height:500px;overflow:auto}
+#tilesContentMiddle{border-left:1px solid #FBFBFB;border-right:1px solid #FBFBFB;background-color:white;font-size:100%;line-height:1.6em;padding:1px;margin-top:5px;margin-bottom:5px;text-align:left;float:left;width:600px;display:block;min-height:500px;overflow:auto}
+#tilesContentLeft{border:0 solid #FBFBFB;background-color:white;font-size:100%;line-height:1.6em;padding:5px;margin-top:5px;margin-bottom:5px;text-align:left;width:800px;display:block;min-height:500px;overflow:auto}
+#tilesMiddleWrap .headerTitle{padding:5px 5px 0;margin-bottom:10px;color:#059;font-size:17px;line-height:20px;font-style:normal;font-weight:bold;border-bottom:1px solid maroon;font-family:Georgia,Verdana,Times New Roman}

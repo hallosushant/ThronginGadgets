@@ -1,0 +1,1 @@
+<img alt="advertisement" src="http://fpoimg.com/160x600?text=Advertise Here&bg_color=FBFBFB">
