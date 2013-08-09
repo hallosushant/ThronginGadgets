@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="cacheLoader_applicationCacheLoaderImpl" class="com.sushant.verma.common.applicationCacheLoader.bll.ApplicationCacheLoaderImpl" >
+		<property name="applicationCacheLoaderDaoObj" ref="cacheLoader_applicationCacheLoaderDaoObj"/>
+	</bean>
+	<bean id="cacheLoader_applicationCacheLoaderDaoObj" class="com.sushant.verma.common.applicationCacheLoader.dao.ApplicationCacheLoaderDao" >
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="cacheLoader_applicationCacheLoader" class="com.sushant.verma.common.applicationCacheLoader.action.ApplicationCacheLoader">
+		<property name="map">
+			<map>
+				<entry key="hintQuestionList">
+					<value>
+						select HINT_QUESTION_ID, HINT_QUESTION from hint_question where STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="userRoleList">
+					<value>
+						select USER_ROLE_ID,USER_ROLE from user_role_mst where STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="categoryList">
+					<value>
+						 select CATEGORY_ID,CATEGORY_NAME from category_mst where STATUS_ID = 1 and PARENT_CATEGORY_ID is null
+						 union
+ 						 select CATEGORY_ID,CATEGORY_NAME from category_mst where STATUS_ID = 1 
+					</value>
+				</entry>
+				<entry key="deviceList">
+					<value>
+						select DEVICE_ID, DEVICE_NAME from device_mst where STATUS_ID=1 
+					</value>
+				</entry>
+				<entry key="manufacturerList">
+					<value>
+						select MANUFACTURER_ID, MANUFACTURER_NAME from manufacturer
+						where STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobileManufacturerList">
+					<value>
+						select MANUFACTURER_ID, MANUFACTURER_NAME from manufacturer
+						where DEVICE_MST_ID=1 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="laptopManufacturerList">
+					<value>
+						select MANUFACTURER_ID, MANUFACTURER_NAME from manufacturer
+						where DEVICE_MST_ID=2 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="tabletManufacturerList">
+					<value>
+						select MANUFACTURER_ID, MANUFACTURER_NAME from manufacturer
+						where DEVICE_MST_ID=3 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobileBodyCatgList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  2 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobileTouchscreenCatgList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  4 and CATEGORY_ID!=61 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="musicMobileCatgList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  6 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobileDataConnectivityList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  7 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobileOSList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  8 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="cameraMobileCatgList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  9 and CATEGORY_ID!=48 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="primaryCameraCatgList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  46 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobileDisplaySizeList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  68 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="mobilePriceBandList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.PARENT_CATEGORY_ID =  73 and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="miscMobileCatgList">
+					<value>
+						SELECT CATEGORY_ID, CATEGORY_NAME FROM category_mst WHERE category_mst.CATEGORY_ID in (5,24,25,62,63,67) and STATUS_ID=1
+					</value>
+				</entry>
+				<entry key="modelList">
+					<value>
+						select MODEL_ID,MODEL_NAME from model where STATUS_ID=1 
+					</value>
+				</entry>
+				<entry key="modelCategoryList">
+					<value>
+						select CATEGORY_ID,CATEGORY_NAME from category_mst where STATUS_ID = 1
+					</value>
+				</entry>
+				<entry key="mobileCategoryList">
+					<value>
+						select CATEGORY_ID,CATEGORY_NAME from category_mst where STATUS_ID = 1 and DEVICE_ID=1 and PARENT_CATEGORY_ID is not null and CATEGORY_ID not in (2,3,7,26,68,73)
+					</value>
+				</entry>
+				<entry key="modelDetailCategoryList">
+					<value>
+						select CATEGORY_ID,CATEGORY_NAME from category_mst where STATUS_ID = 1 and PARENT_CATEGORY_ID = 501 
+					</value>
+				</entry>
+				<entry key="detailNameList">
+					<value>
+						select DETAIL_NAME_ID,DETAIL_NAME from detail_name_mst where STATUS_ID=1 
+					</value>
+				</entry>
+			</map>
+		</property>
+		<property name="applicationCacheLoaderImplObj" ref="cacheLoader_applicationCacheLoaderImpl" />
+	</bean>
+	
+	
+</beans>

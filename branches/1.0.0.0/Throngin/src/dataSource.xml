@@ -1,0 +1,35 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans><!--
+ 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+       <property name="location">
+    		<value>/WEB-INF/classes/jdbc.properties</value>       
+       </property>
+    </bean>
+	--><bean id='dataSource' destroy-method='close' class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user">
+			<bean class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+			  <property name="targetBeanName"><value>common_DbConnectPropLoader</value></property>
+			  <property name="propertyPath"><value>userName</value></property>
+			</bean>
+		</property>
+		<property name="password">
+			<bean class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+			  <property name="targetBeanName"><value>common_DbConnectPropLoader</value></property>
+			  <property name="propertyPath"><value>password</value></property>
+			</bean>
+		</property>
+		<property name="initialPoolSize" value="5" ></property>
+		<property name="minPoolSize" value="3" ></property>
+		<property name="maxPoolSize" value="15" ></property>
+		<property name="maxIdleTime" value="0" ></property>
+		<property name="maxConnectionAge" value="86400" ></property>
+		<property name="breakAfterAcquireFailure" value="false"/>
+		<property name="acquireRetryAttempts" value="30"/>
+		<property name="idleConnectionTestPeriod" value="150" />
+		<property name="preferredTestQuery" value="SELECT 1 from dual"/>
+		<property name="maxStatements" value="300" />
+		<property name="maxStatementsPerConnection" value="100" />
+	</bean>
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+
+    <bean id="common_CommonDao" class="com.sushant.verma.common.dao.CommonDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	
+    <bean id="common_CommonBllRef" class="com.sushant.verma.common.bll.CommonBllImpl">
+		<property name="commonDao" ref="common_CommonDao" />
+	</bean>
+
+	<bean id="common_DbConnectPropLoader" class="com.sushant.verma.common.dbConnect.DbConnectPropLoader">
+		<constructor-arg index="0" value="${jdbc.username}"></constructor-arg>
+		<constructor-arg index="1" value="${jdbc.password}"></constructor-arg>
+	</bean>
+</beans>

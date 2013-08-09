@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+
+<struts>
+	<package name="login" extends="global">
+		<action name="signIn">
+			<result type="tiles">tiles.baseLayoutNOSideBar.body.signIn.jsp</result>
+		</action>
+		<action name="login" class="com.sushant.verma.login.action.LoginAction">
+			<result name="success" type="tiles">tiles.baseLayoutNOSideBar.body.loginSuccess.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayoutNOSideBar.body.signIn.jsp</result>
+		</action>
+		<action name="openLogin" class="com.sushant.verma.login.action.OpenLoginAction">
+			<result name="success" type="tiles">tiles.baseLayoutNOSideBar.body.loginSuccess.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayoutNOSideBar.body.signIn.jsp</result>
+		</action>
+		<action name="fbLogin" class="com.sushant.verma.login.action.FbLoginAction">
+			<result name="success" type="tiles">tiles.baseLayoutNOSideBar.body.loginSuccess.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayoutNOSideBar.body.signIn.jsp</result>
+		</action>
+		<action name="logoutAction" class="com.sushant.verma.login.action.LogoutAction">
+			<result name="logout" >/index.jsp</result>
+		</action>
+		<action name="signUp">
+			<result type="tiles">tiles.baseLayoutNOSideBar.body.signUp.jsp</result>
+		</action>
+		<action name="signUpAction" class="com.sushant.verma.login.action.SignUpAction">
+			<result name="input" type="tiles">tiles.baseLayoutNOSideBar.body.signUp.jsp</result>
+			<result name="success" type="tiles">tiles.baseLayoutNOSideBar.body.success.registrationMsg.jsp</result>
+		</action>
+		<action name="confirmRegistration" class="com.sushant.verma.login.action.SignUpAction" method="confirmRegistration">
+			<result name="success" type="tiles">tiles.baseLayoutNOSideBar.body.success.registrationMsg.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayoutNOSideBar.body.error.registrationMsg.jsp</result>
+		</action>
+		<action name="userhome">
+			<result type="tiles">tiles.baseLayoutNOSideBar.body.loginSuccess.jsp</result>
+		</action>
+	</package>
+	
+	<package name="ajaxLoginPackage" extends="struts-default,json-default">
+		<action name="*_AjaxLoginAction" class="com.sushant.verma.login.action.AjaxLoginAction" method="{1}">
+			<result type="json">
+				<param name="excludeProperties">loginBllInterface</param>
+			</result>		
+		</action>
+	</package>
+</struts>
+
+

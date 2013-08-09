@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+	
+	<bean id="device_DeviceBllImpl" class="com.sushant.verma.device.bll.DeviceBllImpl">
+		<property name="deviceDao" ref="device_DeviceDao" />
+		<property name="modelGallerySPDao" ref="device_ModelGallerySPDao" />
+		<property name="emailService" ref="email_emailService"></property>
+	</bean>
+
+	<bean id="device_DeviceDao" class="com.sushant.verma.device.dao.DeviceDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="device_ModelGallerySPDao" class="com.sushant.verma.device.dao.ModelGallerySPDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="device_ModelBllImpl" class="com.sushant.verma.device.bll.ModelBllImpl">
+		<property name="modelDetailsSPDao" ref="device_ModelDetailsSPDao" />
+	</bean>
+	<bean id="device_ModelDetailsSPDao" class="com.sushant.verma.device.dao.ModelDetailsSPDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

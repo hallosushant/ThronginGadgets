@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+
+	<bean id="admin_AssignUserRoleAction" class="com.sushant.verma.admin.action.AssignUserRoleAction">
+		<property name="adminBllInterface" ref="admin_AdminBllImpl" />
+	</bean>
+	
+	<bean id="admin_CreateCategoryAction" class="com.sushant.verma.admin.action.CreateCategoryAction">
+		<property name="adminBllInterface" ref="admin_AdminBllImpl" />
+	</bean>
+	
+	<bean id="admin_AddNewModelAction" class="com.sushant.verma.admin.action.AddNewModelAction">
+		<property name="adminBllImpl" ref="admin_AdminBllImpl" />
+	</bean>
+	
+	<bean id="admin_AdminBllImpl" class="com.sushant.verma.admin.bll.AdminBllImpl">
+		<property name="adminDao" ref="admin_AdminDao" />
+		<property name="emailService" ref="email_emailService"></property>
+	</bean>
+
+	<bean id="admin_AdminDao" class="com.sushant.verma.admin.dao.AdminDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans>

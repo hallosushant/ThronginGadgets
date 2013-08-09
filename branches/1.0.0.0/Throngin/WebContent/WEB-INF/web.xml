@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>gadgets.throngin.com</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>	
+	
+	<servlet>
+        <servlet-name>jcaptcha</servlet-name>
+        <servlet-class>com.sushant.verma.common.Captcha.ImageCaptchaServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jcaptcha</servlet-name>
+        <url-pattern>/jcaptchaImg.jpg</url-pattern>
+    </servlet-mapping>
+    
+	<error-page>
+        <error-code>404</error-code>
+        <location>/404Error.jsp</location>
+    </error-page>
+	<error-page>
+        <error-code>500</error-code>
+        <location>/500Error.jsp</location>
+    </error-page>
+    <error-page>
+  		<exception-type>java.lang.Throwable</exception-type>
+  		<location>/error.jsp</location>
+	</error-page>
+    
+	<context-param>
+		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+		<param-value>/WEB-INF/tiles.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+	</listener>
+	
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+	<!-- ApplicationCacheLoader listener should be after ContextLoaderListener -->
+    <listener>
+			<listener-class>com.sushant.verma.common.applicationCacheLoader.action.ApplicationCacheLoader</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>urlrewriteConfPath</param-name>
+		<param-value>/WEB-INF/urlrewrite.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>rssFeedPath</param-name>
+		<param-value>/rssFeed.xml</param-value>
+	</context-param>
+	<filter>
+	    <filter-name>UrlRewriteFilter</filter-name>
+	    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	    <init-param>
+	        <param-name>confReloadCheckInterval</param-name>
+	        <param-value>5</param-value>
+    	</init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>UrlRewriteFilter</filter-name>
+	    <url-pattern>*.html</url-pattern>
+	</filter-mapping>
+
+    <!--
+    <listener>
+    	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/classes/applicationContext-main.xml</param-value>
+    </context-param>
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

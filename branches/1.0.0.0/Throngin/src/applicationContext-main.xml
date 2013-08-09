@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<bean id="zPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+       <property name="location">
+    		<value>/WEB-INF/classes/Resources/z.properties</value>       
+       </property>
+    </bean>
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   		<property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:advice id="txAdvice" transaction-manager="txManager" >
+	    <tx:attributes>
+		      <tx:method name="*"  rollback-for="Exception"  />
+	    </tx:attributes>
+  	</tx:advice>
+	<aop:config proxy-target-class="true">
+	    <aop:pointcut id="StatusOperation1" expression="execution(* com.sushant.verma.*.bll.*.*(..))"/> 
+	    <aop:advisor advice-ref="txAdvice" pointcut-ref="StatusOperation1"/>
+  	</aop:config>
+
+	<import resource="dataSource.xml"/>  	
+	<import resource="com/sushant/verma/login/applicationContext-login.xml" />
+	<import resource="com/sushant/verma/admin/applicationContext-admin.xml" />
+	<import resource="com/sushant/verma/device/applicationContext-device.xml" />
+	<import resource="com/sushant/verma/common/applicationContext-common.xml" />
+	<import resource="com/sushant/verma/common/Captcha/applicationContext-captcha.xml" />
+	<import resource="com/sushant/verma/common/email/applicationContext-email.xml" />
+	<import resource="com/sushant/verma/common/applicationCacheLoader/applicationContext-cacheLoader.xml" />
+
+</beans>
+
+

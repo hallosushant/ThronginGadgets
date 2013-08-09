@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+
+<struts>
+	<package name="device" extends="global">
+		<action name="deviceHome" class="com.sushant.verma.device.action.DeviceHomeAction">
+			<result name="success" type="tiles">tiles.baseLayoutTwoSideBar.body.deviceHome.jsp</result>
+			<result name="input" type="tiles">tiles.baseLayoutTwoSideBar.body.deviceHome.jsp</result>
+		</action>
+		<action name="modelGallery" class="com.sushant.verma.device.action.ModelGalleryAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.device.modelGallery.jsp.${galleryTitleSuffix}</result>
+			<result name="more" type="tiles">tiles.baseLayout.body.device.moreModelGallery.jsp.${pageTitle}</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.device.modelGallery.jsp</result>
+		</action>
+		<action name="moreModelGallery" class="com.sushant.verma.device.action.ModelGalleryAction" method="moreModels">
+			<result name="success" type="tiles">tiles.baseLayout.body.device.modelGallery.jsp.${galleryTitleSuffix}</result>
+			<result name="more" type="tiles">tiles.baseLayout.body.device.moreModelGallery.jsp.${pageTitle}</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.device.modelGallery.jsp</result>
+		</action>
+		<action name="modelDetail" class="com.sushant.verma.device.action.ModelDetailAction">
+			<result name="success" type="tiles">tiles.baseLayoutRightSidebar.body.device.modelDetail.jsp.${pageTitle}</result>
+			<result name="input" type="tiles">tiles.baseLayoutRightSidebar.body.device.modelDetail.jsp</result>
+		</action>
+		<action name="writeReview" class="com.sushant.verma.device.action.WriteReviewAction">
+			<result name="success" type="tiles">tiles.baseLayoutRightSidebar.body.device.writeReview.jsp.${pageTitle}</result>
+			<result name="input" type="tiles">tiles.baseLayoutRightSidebar.body.device.writeReview.jsp</result>
+			<result name="modelDetail" type="redirectAction">
+				<param name="actionName">modelDetail</param>
+				<param name="dId">${dId}</param>
+				<param name="bId">${bId}</param>
+				<param name="cId">${cId}</param>
+				<param name="mId">${mId}</param>
+				<param name="msg">${msg}</param>
+				<param name="msgType">${msgType}</param>
+			</result>
+		</action>
+		<action name="advancedSearch" class="com.sushant.verma.device.action.AdvancedSearchAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.device.advancedSearch</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.device.advancedSearch</result>
+		</action>
+		<action name="quickSearch" class="com.sushant.verma.device.action.QuickSearchAction">
+			<result name="success" type="tiles">tiles.baseLayout.body.device.quickSearch</result>
+			<result name="modelDetail" type="redirectAction">
+				<param name="actionName">modelDetail</param>
+				<param name="dId">${dId}</param>
+				<param name="bId">${bId}</param>
+				<param name="cId">${cId}</param>
+				<param name="mId">${mId}</param>
+				<param name="msg">${msg}</param>
+				<param name="msgType">${msgType}</param>
+			</result>
+			<result name="input" type="tiles">tiles.baseLayout.body.device.quickSearch</result>
+		</action>
+
+	</package>
+
+	<package name="deviceAjaxPackage" extends="struts-default,json-default">
+		<action name="*_DeviceAjaxAction" class="com.sushant.verma.device.action.DeviceAjaxAction" method="{1}">
+			<result name="success" type="json">
+				<param name="excludeProperties">deviceBllImpl</param>
+			</result>		
+		</action>
+		<action name="*_advancedSearchAjaxAction" class="com.sushant.verma.device.action.AdvancedSearchAction" method="{1}">
+			<result name="success" type="json">
+				<param name="excludeProperties">deviceBllImpl</param>
+			</result>		
+		</action>
+		<action name="*_quickSearchAjaxAction" class="com.sushant.verma.device.action.QuickSearchAction" method="{1}">
+			<result name="success" type="json">
+				<param name="excludeProperties">deviceBllImpl</param>
+			</result>		
+		</action>
+	</package>
+</struts>
+
+
